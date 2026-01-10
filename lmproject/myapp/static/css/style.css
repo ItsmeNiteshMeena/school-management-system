@@ -1,0 +1,219 @@
+/* *{
+    margin: 0;
+    padding: 0;
+}
+
+
+body {
+    background-image: url("https://sund-images.sunnxt.com/173094/1600x1200_BackToSchoolSeason1_173094_bdebd819-a238-4a3d-b7eb-95ed16b3b889.jpg");
+    background-color: rgb(248, 248, 253);
+    font-family: "Poppins", sans-serif;
+    color: white;
+    background-size: cover; 
+    /* background-position:center ; 
+    background-repeat: no-repeat; 
+    height: 100vh;
+    margin: 0;
+}
+nav {
+    display: flex;
+    justify-content:space-around;
+    align-items: center;
+     background-color: rgb(77, 88, 3); 
+    height: 80px;
+}
+nav ul{
+    display: flex;
+    justify-content: center;
+}
+nav ul li{
+    list-style: none;
+    margin: 0 23px;
+}
+nav ul li a{
+    text-decoration: none;
+    color: white;
+    font-size: 1.3rem; 
+}
+
+nav ul li a:hover{
+   color: rgb(163, 163, 236); 
+}
+.left{
+    font-size: 2rem;
+}
+
+.btn1{
+    padding: 6px 30px;
+    border-radius: 20px;
+    background-color: rgba(62, 145, 234, 0.926);
+    font-size: 20px;
+    color: aliceblue;
+}
+.btn1:hover
+{
+    color: rgb(16, 84, 101);
+}
+.btn2{
+    padding: 6px 30px;
+    border-radius: 20px;
+    background-color: rgba(62, 145, 234, 0.926);
+    font-size: 20px;
+    color: aliceblue; 
+}
+.btn2:hover
+{
+    color: rgb(16, 84, 101);
+} */ 
+
+
+
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url("https://sund-images.sunnxt.com/173094/1600x1200_BackToSchoolSeason1_173094_bdebd819-a238-4a3d-b7eb-95ed16b3b889.jpg");
+    background-color: rgb(248, 248, 253);
+    font-family: "Poppins", sans-serif;
+    color: white;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+/* Navbar */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    height: 80px;
+    background: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+nav .menu-toggle {
+    display: none;
+    font-size: 1.8rem;
+    color: white;
+    cursor: pointer;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    list-style: none;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.2rem;
+}
+
+nav ul li a:hover {
+    color: rgb(163, 163, 236);
+}
+
+.left {
+    font-size: 1.8rem;
+}
+
+/* Buttons */
+.btn1, .btn2 {
+    padding: 6px 20px;
+    border-radius: 20px;
+    background-color: rgba(62, 145, 234, 0.926);
+    font-size: 18px;
+    color: aliceblue;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn1:hover, .btn2:hover {
+    color: rgb(16, 84, 101);
+}
+
+/* Center Content */
+.main-content {
+    margin-top: 100px;
+    font-size: 2rem;
+    font-weight: bold;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 1024px) {
+    nav {
+        padding: 0 10px;
+    }
+    
+    nav ul li {
+        margin: 0 10px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        height: auto;
+        padding: 10px;
+    }
+    
+    nav .menu-toggle {
+        display: block;
+    }
+    
+    nav ul {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        padding: 10px 0;
+    }
+    
+    nav ul.active {
+        display: flex;
+    }
+    
+    nav ul li {
+        margin: 10px 0;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .left {
+        font-size: 1.5rem;
+    }
+    
+    nav ul li a {
+        font-size: 1rem;
+    }
+    
+    .btn1, .btn2 {
+        font-size: 16px;
+        padding: 5px 15px;
+    }
+}

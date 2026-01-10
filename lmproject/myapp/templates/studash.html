@@ -1,0 +1,138 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/studash.css' %}">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    
+    <div class="sidebar">
+        <h2>Student Dashboard</h2>
+        <ul>
+            <li><a href="#"><i class="fas fa-user"></i> View Details</a></li>
+            <li><a href="#"><i class="fas fa-edit"></i> Edit Details</a></li>
+            <li><a href="{% url 'queryform' pk=data.id %}"><button class="qbtn">Query</button></a></li>
+            <li><a href="{% url 'scheduled' %}"><i class="fas fa-question-circle"></i> Scheduled classes</a></li>
+            <li><a href="{% url 'home' %}"> Log Out</a></li>
+        </ul>
+    </div>
+    <div class="main-content">
+        <header>
+            <h2>Student Dashboard</h2>
+            <div class="user-info">
+                <span>{{data.name}}</span>
+                <i class="fas fa-user-circle"></i>
+            </div>
+        </header>
+        <section class="student-details">
+            <h3>Your Details</h3>
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <td>{{data.id}}</td>
+                </tr>
+                <tr>
+                    <th>Name</th>
+                    <td>{{data.name}}</td>
+                </tr>
+                <tr>
+                    <th>class</th>
+                    <td>{{data.standard}}</td>
+                </tr>
+                <tr>
+                    <th>Email</th>
+                    <td>{{data.email}}</td>
+                </tr>
+            </table>
+            <!-- <button>Edit Details</button> -->
+        </section>
+
+        <section>
+
+            {% if data1 %}
+            <h1> Query Form </h1>
+            <form action="{% url 'querydata' %}" method='post' class="form-container">
+                {% csrf_token %}
+                
+                <label for="name" class="form-label">Name:</label>
+                <input type="text" name="name" value="{{ data.name }}" class="form-input" required>
+                
+                <label for="email" class="form-label">Email:</label>
+                <input type="email" name="email" value="{{ data.email }}" class="form-input" required>
+        
+                <label for="query" class="form-label">Query:</label>
+                <textarea name="query" class="form-textarea" required>{{ data.query }}</textarea>
+        
+                <input type="submit" value="Submit" class="form-submit">
+            </form>
+          {% endif %}
+          {% if editdata %}
+          <h1>Update form</h1>
+           <form action="{% url 'updatedata' pk=editdata.id %}" method='post' class="form-container">
+            {% csrf_token %}
+              <label for="Name" >Name : </label>
+              <input type="text" name="name" value="{{editdata.name}}"  class="form-input">
+              <br>
+              <label for="Email" >Email : </label>
+              <input type="email" name="email" value="{{editdata.email}}"  class="form-input">
+              <br>
+              <input type="text" name="query" value="{{editdata.query}}"  class="form-input">
+              <br>
+              <input type="submit" name="update" class="form-submit">
+            </form>
+          {% endif %}
+  
+      </div>
+          <!-- <div class="rs"> -->
+            <section>
+              <li><a href="{% url 'allquery' pk=data.id %}"><button class="sbtn">Show all Query</button></a></li>
+              {% if allquery %}
+              <tr>
+                <form action="{% url 'search' pk=data.id %}" method="post">
+                  {% csrf_token %}
+                  <input type="search" name="search">
+                  <button type="submit">search</button>
+                </form>
+              </tr>
+              <table border="2px" style="color:rgb(5, 10, 15);">
+              <tr>
+                <th>S.No</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Query</th>
+                <th>Edit</th>
+                <th>Delete</th>
+              </tr>
+              {% for i in allquery  %}
+              <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{i.name}}</td>
+                <td>{{i.email}}</td>
+                <td>{{i.query}}</td>
+                <td><a href="{% url 'edit' pk=i.id %}" method="POST">Edit</a></td>
+  
+                <td><form action="{% url 'delete' pk=i.id%}" method="POST">   
+                  {% csrf_token %}
+                  <button type="submit" onclick="return confirm('are you sure ?')">Delete</button>
+                </form></td>
+              </tr>
+                
+              {% endfor %}
+              </table>
+              {% endif %}
+            </section>
+          <!-- </div> -->
+        </section>
+        <!-- <section class="query-section">
+            <h3>Submit a Query</h3>
+            <textarea rows="4" placeholder="Write your query here..."></textarea>
+            <button>Submit Query</button>
+        </section> -->
+    </div>
+</body>
+</html>

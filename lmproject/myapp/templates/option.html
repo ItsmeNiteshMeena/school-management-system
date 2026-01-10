@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/option.css' %}">
+<body>
+    <div class="container">
+        <h2>Welcome to School Management System</h2>
+        <div class="login-box">
+            <div class="login-option">
+                <a href="{% url 'login' %}">
+                    <div class="icon"><i class="fas fa-user-shield"></i></div>
+                    <h3>Admin Login</h3>
+                </a>
+            </div>
+            <div class="login-option">
+                <a href="{% url 'stulogin' %}">
+                    <div class="icon"><i class="fas fa-user-graduate"></i></div>
+                    <h3>Student Login</h3>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+  
+{% endblock %}
